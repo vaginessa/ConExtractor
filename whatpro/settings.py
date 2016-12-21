@@ -1,12 +1,13 @@
 import os
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = '1#5ojx(wz04+^4)3sp36=ln-774gf%@hicf*$tw_*rdlz#tvir'
+SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = True # os.environ.get('CONEXTRACTOR_DEBUG') != None
+DEBUG = os.environ.get('CONEXTRACTOR_DEBUG') != None
 
-ALLOWED_HOSTS = ['*'] # ['conextractor.herokuapp.com'] if not DEBUG else ['*']
+ALLOWED_HOSTS = ['conextractor.herokuapp.com'] if not DEBUG else ['*']
 
 INSTALLED_APPS = [
     'django.contrib.sessions',
@@ -88,8 +89,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 
-
-import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
