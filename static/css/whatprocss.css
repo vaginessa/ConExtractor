@@ -13,10 +13,9 @@ nav > .darken-4 {
     height: 50px !important;
 }
 
-
-.brand-logo{
-    height: 50px!important;
-    line-height: 50px!important;
+.brand-logo {
+    height: 50px !important;
+    line-height: 50px !important;
 }
 
 #div-element {
@@ -27,6 +26,19 @@ nav > .darken-4 {
     resize: none;
 }
 
+#tut-video {
+    margin-left: 370px;
+    height: 350px;
+    width: 600px;
+}
+
+#warning-message {
+    border-radius: 25px;
+}
+
+#msg {
+    font-weight: 500;
+}
 
 footer {
     width: 100%;
