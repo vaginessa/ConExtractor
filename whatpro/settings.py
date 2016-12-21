@@ -5,11 +5,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# DEBUG = os.environ.get('CONEXTRACTOR_DEBUG') != None
-# ALLOWED_HOSTS = ['conextractor.herokuapp.com'] if not DEBUG else ['*']
+DEBUG = False
+ALLOWED_HOSTS = ['conextractor.herokuapp.com']
 
-DEBUG = True
-ALLOWED_HOSTS = ['*']
+# DEBUG = True
+# ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.sessions',
