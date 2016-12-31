@@ -10,6 +10,8 @@
     <link href="{% static 'css/whatprocss.css' %}" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           type="text/css">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/csshake.min.css' %}">
 </head>
 <body>
 
@@ -18,9 +20,9 @@
         <div class="container">
             <a href="/" class="brand-logo">ConExtractor</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="https://facebook.com/shuboy2014"><i class="fa fa-facebook fa-2x"></i></a></li>
-                <li><a href="https://linkedin.com/in/shuboy2014"><i class="fa fa-linkedin fa-2x"></i></a></li>
-                <li><a href="https://github.com/shuboy2014"><i class="fa fa-github fa-2x"></i></a></li>
+                <li class="shake-slow"><a href="https://facebook.com/shuboy2014"><i class="fa fa-facebook fa-2x"></i></a></li>
+                <li class="shake-slow"><a href="https://linkedin.com/in/shuboy2014"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                <li class="shake-slow"><a href="https://github.com/shuboy2014"><i class="fa fa-github fa-2x"></i></a></li>
             </ul>
         </div>
     </div>
@@ -28,7 +30,7 @@
 
 
 <div id="name">
-    <h2 align="center"> Extract Your <i class="fa fa-whatsapp"></i> Group <i
+    <h2 align="center" class="animated rubberBand" style="cursor: pointer;" id="heading"> Extract Your <i class="fa fa-whatsapp"></i> Group <i
             class="fa fa-address-book" aria-hidden="true"></i> Contacts !
     </h2>
 </div>
@@ -37,9 +39,9 @@
 
 <div class="container">
     <textarea rows="15" id="div-element" placeholder="Paste your div Element Here !" spellcheck="false"></textarea>
-    <a class="btn-floating btn-large waves-effect waves-light green darken-4 s12 m2" id="reset"
+    <a class="btn-floating btn-large waves-effect waves-light green darken-4 s12 m2 shake-slow" id="reset"
        title="Reset text box">Reset</a>
-    <a class="btn-floating btn-large waves-effect waves-light red right" id="extract" title="Submit"><i
+    <a class="btn-floating btn-large waves-effect waves-light red right shake-slow" id="extract" title="Submit"><i
             class="fa fa-paper-plane s12 m2"
             aria-hidden="true"></i>
     </a>
@@ -79,7 +81,7 @@
 </footer>
 <script  src="https://apis.google.com/js/platform.js"></script>
 <script  src="{% static 'js/materialize.min.js' %}"></script>
-<script  src="{% static 'js/whatprojs.min.js' %}"></script>
+<script  src="{% static 'js/whatprojs.js' %}"></script>
 <script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
