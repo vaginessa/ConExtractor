@@ -1,7 +1,29 @@
 /**
  * Created by Shubham Aggarwal on 12-11-2016.
  */
+
+var effect = [
+    "bounce",
+    "flash",
+    "pulse",
+    "rubberBand",
+    "shake",
+    "headShake",
+    "swing",
+    "tada",
+    "wobble",
+    "jello"
+];
+
 $(document).ready(function () {
+
+    $('#heading').hover(function () {
+        $(this).removeClass();
+        var index = Math.floor((Math.random() * 10) + 1);
+        $(this).addClass('animated ' + effect[index-1]);
+    }, function () {
+        $(this).removeClass();
+    });
 
     $("#extract").on("click", function () {
 
@@ -9,11 +31,11 @@ $(document).ready(function () {
         $('#reset').prop('disabled', true);
         var htmlcode = $('#div-element').val();
 
-        if(htmlcode==""){
+        if (htmlcode == "") {
             $('#error-message').val("You Cannot Submit Empty Div Element !");
             $('.modal').modal();
             $('#error-modal').modal('open');
-            return ;
+            return;
         }
 
         var data = {
@@ -25,7 +47,7 @@ $(document).ready(function () {
             type: "POST",
             url: '/',
             data: data,
-            dataType : 'json',
+            dataType: 'json',
             success: function (response) {
                 $('#success-message').val(" Volia ! You have " + response["count"] + " Contacts . Check your downloads");
                 $('.modal').modal();
