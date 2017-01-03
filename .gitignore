@@ -1,6 +1,0 @@
-# Created by .ignore support plugin (hsz.mobi)
-db.sqlite3
-whatsapp/migrations
-whatpro/secret.py
-*.pyc
-.gitignore
