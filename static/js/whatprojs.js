@@ -4,15 +4,12 @@
 
 var effect = [
     "bounce",
-    "flash",
     "pulse",
     "rubberBand",
     "shake",
     "headShake",
     "swing",
-    "tada",
-    "wobble",
-    "jello"
+    "tada"
 ];
 
 $(document).ready(function () {
@@ -25,11 +22,14 @@ $(document).ready(function () {
         $(this).removeClass();
     });
 
-    $("#extract").on("click", function () {
+    $("#id_divform").submit(function (event) {
+
+        event.preventDefault();
 
         $('#extract').prop('disabled', true);
         $('#reset').prop('disabled', true);
-        var htmlcode = $('#div-element').val();
+
+        var htmlcode = $('#id_textarea').val();
 
         if (htmlcode == "") {
             $('#error-message').val("You Cannot Submit Empty Div Element !");
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
         var data = {
             "csrfmiddlewaretoken": $('input[name="csrfmiddlewaretoken"]').val(),
-            "htmlcode": htmlcode
+            "textarea": htmlcode
         };
 
         $.ajax({
@@ -49,6 +49,7 @@ $(document).ready(function () {
             data: data,
             dataType: 'json',
             success: function (response) {
+                console.log(response);
                 $('#success-message').val(" Volia ! You have " + response["count"] + " Contacts . Check your downloads");
                 $('.modal').modal();
                 $('#success-modal').modal('open');

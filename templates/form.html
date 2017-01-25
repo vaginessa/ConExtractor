@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>ConExtractor | Extract WhatsApp Group Contacts</title>
-    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script  src="{% static 'js/FileSaver.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="{% static 'js/FileSaver.min.js' %}"></script>
     <link href="{% static 'css/materialize.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/whatprocss.css' %}" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           type="text/css">
     <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/csshake.min.css' %}">
+    <link href="{% static 'css/whatprocss.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -20,35 +20,47 @@
         <div class="container">
             <a href="/" class="brand-logo">ConExtractor</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li class="shake-slow"><a href="https://facebook.com/shuboy2014"><i class="fa fa-facebook fa-2x"></i></a></li>
-                <li class="shake-slow"><a href="https://linkedin.com/in/shuboy2014"><i class="fa fa-linkedin fa-2x"></i></a></li>
-                <li class="shake-slow"><a href="https://github.com/shuboy2014"><i class="fa fa-github fa-2x"></i></a></li>
+                <li class="shake-slow"><a href="https://facebook.com/shuboy2014"><i
+                        class="fa fa-facebook fa-2x"></i></a></li>
+                <li class="shake-slow"><a href="https://linkedin.com/in/shuboy2014"><i class="fa fa-linkedin fa-2x"></i></a>
+                </li>
+                <li class="shake-slow"><a href="https://github.com/shuboy2014"><i class="fa fa-github fa-2x"></i></a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
+<a href="https://github.com/shuboy2014/ConExtractor"
+   style="position: absolute; top: 0; right: 0; border: 0; z-index: 10;">
+    <img src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
+         alt="Fork me on GitHub"
+         data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
 
 <div id="name">
-    <h2 align="center" class="animated rubberBand" style="cursor: pointer;" id="heading"> Extract Your <i class="fa fa-whatsapp"></i> Group <i
+    <h2 align="center" class="animated rubberBand" style="cursor: pointer;" id="heading"> Extract Your <i
+            class="fa fa-whatsapp"></i> Group <i
             class="fa fa-address-book" aria-hidden="true"></i> Contacts !
     </h2>
 </div>
 <br>
 
-
-<div class="container">
-    <textarea rows="15" id="div-element" placeholder="Paste your div Element Here !" spellcheck="false"></textarea>
-    <a class="btn-floating btn-large waves-effect waves-light green darken-4 s12 m2 shake-slow" id="reset"
-       title="Reset text box">Reset</a>
-    <a class="btn-floating btn-large waves-effect waves-light red right shake-slow" id="extract" title="Submit"><i
+<form class="container" method="post" id="id_divform">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button type="button" class="btn-floating btn-large waves-effect waves-light green darken-4 s12 m2 shake-slow"
+            id="reset"
+            title="Reset text box">Reset
+    </button>
+    <button type="submit" class="btn-floating btn-large waves-effect waves-light red right shake-slow" id="extract"
+            title="Submit"><i
             class="fa fa-paper-plane s12 m2"
-            aria-hidden="true"></i>
-    </a>
-</div>
+            aria-hidden="true"></i></button>
+</form>
 
-<iframe id="tut-video" align="center" width="560" height="315" src="https://www.youtube.com/embed/lJIhvj7V5qo" frameborder="0" allowfullscreen></iframe>
-
+<iframe id="tut-video" align="center" width="560" height="315" src="https://www.youtube.com/embed/lJIhvj7V5qo"
+        frameborder="0" allowfullscreen></iframe>
 
 <div id="error-modal" class="modal">
     <div class="modal-content">
@@ -64,9 +76,8 @@
     </div>
 </div>
 
-
 <div id="warning">
-  <h4 id="msg" align="center">Note: We do not store any Contact Number in Backend.</h4>
+    <h4 id="msg" align="center">Note: We do not store any Contact Number in Backend.</h4>
 </div>
 
 <br><br>
@@ -79,9 +90,9 @@
     </p>
     <br>
 </footer>
-<script  src="https://apis.google.com/js/platform.js"></script>
-<script  src="{% static 'js/materialize.min.js' %}"></script>
-<script  src="{% static 'js/whatprojs.js' %}"></script>
+<script src="https://apis.google.com/js/platform.js"></script>
+<script src="{% static 'js/materialize.min.js' %}"></script>
+<script src="{% static 'js/whatprojs.js' %}"></script>
 <script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;

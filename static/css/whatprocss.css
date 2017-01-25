@@ -12,6 +12,7 @@ nav,
 nav > .light-blue,
 nav > .darken-4 {
     height: 50px !important;
+    z-index: 9!important;
 }
 
 .brand-logo {
@@ -19,12 +20,17 @@ nav > .darken-4 {
     line-height: 50px !important;
 }
 
-#div-element {
+#id_textarea {
     height: auto !important;
     border-radius: 25px;
     padding: 15px;
     outline: none;
     resize: none;
+}
+
+input[type='submit'],
+input[type='button']{
+    font-family: FontAwesome;
 }
 
 #tut-video {
