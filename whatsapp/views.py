@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from extractor import main
 from django.views import View
 from .forms import DivForm
+import time
 
 
 class Index(View):
