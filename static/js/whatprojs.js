@@ -55,8 +55,8 @@ $(document).ready(function () {
                 $('#success-message').html(msg);
                 $('.modal').modal();
                 $('#success-modal').modal('open');
-                // var file = new File([response["contacts"]], "Contact-List.txt", {type: "text/plain;charset=utf-8"});
-                // saveAs(file);
+                var file = new File([response["contacts"]], "Contact-List.txt", {type: "text/plain;charset=utf-8"});
+                saveAs(file);
             },
             error: function () {
                 $('#error-message').val("Server not Responding !");
