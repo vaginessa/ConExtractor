@@ -14,3 +14,4 @@ def main(html):
         if i.get('class') == ['emojitext', 'ellipsify'] and i.get("title") is not None:
             contact_list.append(concatenate(i.get_text()))
     return contact_list
+

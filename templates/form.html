@@ -3,6 +3,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Shubham Aggarwal">
+    <meta property="og:url" content="http://shuboy.me/"/>
+    <meta property="og:site_name" content="shuboy"/>
+    <meta property="og:title" content="Shubham Aggarwal | Personal Portfolio"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="http://hackide.herokuapp.com/static/hackIDE/img/screenshot.cc9c26871a46.png"/>
+    <meta property="og:description"
+          content="Shubham Aggarwal tech enthusiast, full stack web devloper, Software developer"/>
+    <meta name="description" content="Shubham Aggarwal tech enthusiast, full stack web devloper, data scientist/
+    Software developer">
+    <meta name="keywords" content="shuboy2014, shuboy, portfolio, shubham aggarwal, django, python, machine learning, \
+    data scientist, djangorestframework, javascript,jquery, font-awesome, whatsapp group contact extractor,hackernews \
+    scrapper, conextractor, yoide, shorturl, MAIT, chrome extensions, saveit pasteit">
     <title>ConExtractor | Extract WhatsApp Group Contacts</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="{% static 'js/FileSaver.min.js' %}"></script>
@@ -12,84 +26,90 @@
     <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/csshake.min.css' %}">
     <link href="{% static 'css/whatprocss.css' %}" rel="stylesheet" type="text/css">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 <body>
 
-<nav>
-    <div class="navbar-fixed light-blue darken-4">
-        <div class="container">
-            <a href="/" class="brand-logo">ConExtractor</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li class="shake-slow"><a href="https://facebook.com/shuboy2014"><i
-                        class="fa fa-facebook fa-2x"></i></a></li>
-                <li class="shake-slow"><a href="https://linkedin.com/in/shuboy2014"><i class="fa fa-linkedin fa-2x"></i></a>
-                </li>
-                <li class="shake-slow"><a href="https://github.com/shuboy2014"><i class="fa fa-github fa-2x"></i></a>
-                </li>
-            </ul>
+    <nav>
+        <div class="navbar-fixed light-blue darken-4">
+            <div class="container">
+                <a href="/" class="brand-logo">ConExtractor</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li class="shake-slow"><a href="https://facebook.com/shuboy2014"><i
+                            class="fa fa-facebook fa-2x"></i></a></li>
+                    <li class="shake-slow"><a href="https://linkedin.com/in/shuboy2014"><i class="fa fa-linkedin fa-2x"></i></a>
+                    </li>
+                    <li class="shake-slow"><a href="https://github.com/shuboy2014"><i class="fa fa-github fa-2x"></i></a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
+
+    <a href="https://github.com/shuboy2014/ConExtractor"
+       style="position: absolute; top: 0; right: 0; border: 0; z-index: 10;">
+        <img src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
+             alt="Fork me on GitHub"
+             data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+    </a>
+
+
+    <div id="name">
+        <h2 align="center" class="animated rubberBand" style="cursor: pointer;" id="heading"> Extract Your <i
+                class="fa fa-whatsapp"></i> Group <i
+                class="fa fa-address-book" aria-hidden="true"></i> Contacts !
+        </h2>
     </div>
-</nav>
-
-<a href="https://github.com/shuboy2014/ConExtractor"
-   style="position: absolute; top: 0; right: 0; border: 0; z-index: 10;">
-    <img src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
-         alt="Fork me on GitHub"
-         data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
-
-
-<div id="name">
-    <h2 align="center" class="animated rubberBand" style="cursor: pointer;" id="heading"> Extract Your <i
-            class="fa fa-whatsapp"></i> Group <i
-            class="fa fa-address-book" aria-hidden="true"></i> Contacts !
-    </h2>
-</div>
 <br>
 
-<form class="container" method="post" id="id_divform">
-    {{ form.as_p }}
-    {% csrf_token %}
-    <button type="button" class="btn-floating btn-large waves-effect waves-light green darken-4 s12 m2 shake-slow"
-            id="reset"
-            title="Reset text box">Reset
-    </button>
-    <button type="submit" class="btn-floating btn-large waves-effect waves-light red right shake-slow" id="extract"
-            title="Submit"><i
-            class="fa fa-paper-plane s12 m2"
-            aria-hidden="true"></i></button>
-</form>
+    <form class="container" method="post" id="id_divform">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="button" class="btn-floating btn-large waves-effect waves-light green darken-4 s12 m2"
+                id="reset"
+                title="Reset text box">Reset
+        </button>
+        <button type="submit" class="btn-floating btn-large waves-effect waves-light red right" id="extract"
+                title="Submit"><i
+                class="fa fa-paper-plane s12 m2"
+                aria-hidden="true"></i></button>
+    </form>
 
-<iframe id="tut-video" align="center" width="560" height="315" src="https://www.youtube.com/embed/lJIhvj7V5qo"
-        frameborder="0" allowfullscreen></iframe>
+    <iframe id="tut-video" align="center" width="560" height="315" src="https://www.youtube.com/embed/lJIhvj7V5qo"
+            frameborder="0" allowfullscreen></iframe>
 
-<div id="error-modal" class="modal">
-    <div class="modal-content">
-        <h4 align="center">Error Log</h4>
-        <p id="error-message"> You Cannot Submit Empty Div Element .</p>
+    <div id="error-modal" class="modal">
+        <div class="modal-content">
+            <h4 align="center">Error Log</h4>
+            <p id="error-message"> You Cannot Submit Empty Div Element .</p>
+        </div>
     </div>
-</div>
 
-<div id="success-modal" class="modal">
-    <div class="modal-content">
-        <h4 align="center">Viola</h4>
-        <p id="success-message">Cool , You have Contacts !</p>
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <h4 align="center">Viola</h4>
+            <p id="success-message">Cool , You have Contacts !</p>
+        </div>
     </div>
-</div>
 
-<div id="warning">
-    <h4 id="msg" align="center">Note: We do not store any Contact Number in Backend.</h4>
-</div>
+    <div id="warning">
+        <h4 id="msg" align="center">Note: We do not store any Contact Number in Backend.</h4>
+    </div>
 
 <br><br>
 
-<footer>
-    <div class="g-ytsubscribe" data-channelid="UC-jSOiQs07LAbdEbXTzY20w" data-layout="full" data-theme="dark"
-         data-count="default"></div>
-    <p class="right" style="margin-top: 7px;"> Copyrights © <a href="http://www.shuboy2014.me" title="Github">Shubham
-        Aggarwal</a> 2017 <br>Made with <i class="fa fa-heart"></i> in India
-    </p>
-    <br>
-</footer>
+    <footer>
+        <div class="row">
+            <div class="col-lg-1">
+                <div class="g-ytsubscribe" data-channelid="UC-jSOiQs07LAbdEbXTzY20w" data-layout="full" data-theme="dark"
+                     data-count="default"></div>
+                <p class="right" style="margin-top: 7px;"> Copyrights © <a href="http://www.shuboy2014.me" title="Github">Shubham
+                    Aggarwal</a> 2017 <br>Made with <i class="fa fa-heart"></i> in India
+                </p>
+            </div>
+        </div>
+        <br>
+    </footer>
 <script src="https://apis.google.com/js/platform.js"></script>
 <script src="{% static 'js/materialize.min.js' %}"></script>
 <script src="{% static 'js/whatprojs.js' %}"></script>
@@ -108,7 +128,6 @@
 
     ga('create', 'UA-79857989-4', 'auto');
     ga('send', 'pageview');
-
 </script>
 </body>
 </html>
