@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="{% static 'css/csshake.min.css' %}">
     <link href="{% static 'css/whatprocss.css' %}" rel="stylesheet" type="text/css">
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script  src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 
@@ -65,6 +66,8 @@
     <form class="container" method="post" id="id_divform">
         {{ form.as_p }}
         {% csrf_token %}
+        <div class="g-recaptcha" align="center" data-sitekey="6LfzXhYUAAAAANBi-HxIyUZ2opqdGNm4rxjuTJsG"></div>
+
         <button type="button" class="btn-floating btn-large waves-effect waves-light green darken-4 s12 m2"
                 id="reset"
                 title="Reset text box">Reset
@@ -104,7 +107,7 @@
                 <div class="g-ytsubscribe" data-channelid="UC-jSOiQs07LAbdEbXTzY20w" data-layout="full" data-theme="dark"
                      data-count="default"></div>
                 <p class="right" style="margin-top: 7px;"> Copyrights © <a href="http://www.shuboy2014.me" title="Github">Shubham
-                    Aggarwal</a> 2017 <br>Made with <i class="fa fa-heart"></i> in India
+                    Aggarwal</a> 2017 <br>Made with <i class="fa fa-heart" style="color: darkred;"></i> in India
                 </p>
             </div>
         </div>
