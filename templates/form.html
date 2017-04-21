@@ -5,23 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Shubham Aggarwal">
-    <meta property="og:url" content="http://shuboy.me/"/>
-    <meta property="og:site_name" content="shuboy"/>
-    <meta property="og:title" content="Shubham Aggarwal | Personal Portfolio"/>
+    <meta property="og:url" content="conextractor.herokuapp.com"/>
+    <meta property="og:site_name" content="Conextractor"/>
+    <meta property="og:title" content="Conextractor | Extract WhatsApp Group Contacts"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="http://hackide.herokuapp.com/static/hackIDE/img/screenshot.cc9c26871a46.png"/>
     <meta property="og:description"
-          content="Shubham Aggarwal tech enthusiast, full stack web devloper, Software developer"/>
+          content="Conextractor helps to extract your whatsapp group contacts through your input html code."/>
     <meta name="description" content="Shubham Aggarwal tech enthusiast, full stack web devloper, data scientist/
     Software developer">
     <meta name="keywords" content="shuboy2014, shuboy, portfolio, shubham aggarwal, django, python, machine learning, \
     data scientist, djangorestframework, javascript,jquery, font-awesome, whatsapp group contact extractor,hackernews \
-    scrapper, conextractor, yoide, shorturl, MAIT, chrome extensions, saveit pasteit">
+    scrapper, conextractor, yoide, shorturl, MAIT, chrome extensions, saveit pasteit, chatbot, lotu-chatbot">
     <title>ConExtractor | Extract WhatsApp Group Contacts</title>
 
     {# plugins css #}
     <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/csshake.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sweetalert.css' %}">
     <link href="{% static 'css/materialize.min.css' %}" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           type="text/css">
@@ -30,9 +31,12 @@
     <link href="{% static 'css/whatprocss.min.css' %}" rel="stylesheet" type="text/css">
 
     {# recaptcha API javascript #}
+    <script src="https://apis.google.com/js/platform.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="{% static 'js/FileSaver.min.js' %}"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="{% static 'js/sweetalert.min.js' %}"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
 </head>
 <body>
 
@@ -41,11 +45,16 @@
         <div class="container">
             <a href="/" class="brand-logo">ConExtractor</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li class="shake-slow"><a href="https://facebook.com/shuboy2014"><i
+                <li class="shake-slow"><a href="https://facebook.com/hackprodev" target="_blank"><i
                         class="fa fa-facebook fa-2x"></i></a></li>
-                <li class="shake-slow"><a href="https://linkedin.com/in/shuboy2014"><i class="fa fa-linkedin fa-2x"></i></a>
+                <li class="shake-slow"><a href="https://github.com/hackprodev" target="_blank"><i
+                        class="fa fa-github fa-2x"></i></a>
                 </li>
-                <li class="shake-slow"><a href="https://github.com/shuboy2014"><i class="fa fa-github fa-2x"></i></a>
+                <li class="shake-slow"><a href="https://www.youtube.com/channel/UC-jSOiQs07LAbdEbXTzY20w" target="_blank"><i
+                        class="fa fa-youtube fa-2x"></i></a>
+                </li>
+                <li class="shake-slow"><a href="https://twitter.com/hackprodev" target="_blank"><i
+                        class="fa fa-twitter fa-2x"></i></a>
                 </li>
             </ul>
         </div>
@@ -109,8 +118,8 @@
 <footer>
     <div class="row">
         <div class="col-lg-1">
-            <div class="g-ytsubscribe" data-channelid="UC-jSOiQs07LAbdEbXTzY20w" data-layout="full" data-theme="dark"
-                 data-count="default"></div>
+            <div class="g-ytsubscribe" data-channelid="UC-jSOiQs07LAbdEbXTzY20w" data-layout="full" data-count="default"
+                 data-onytevent="onYtEvent"></div>
             <p class="right" style="margin-top: 7px;"> Copyrights © <a href="http://www.shuboy2014.me" title="Github">Shubham
                 Aggarwal</a> 2017 <br>Made with <i class="fa fa-heart" style="color: darkred;"></i> in India
             </p>
@@ -118,7 +127,6 @@
     </div>
     <br>
 </footer>
-<script src="{% static 'js/materialize.min.js' %}"></script>
 <script src="{% static 'js/whatprojs.min.js' %}"></script>
 <script>
     (function (i, s, o, g, r, a, m) {
