@@ -10,11 +10,8 @@ except Exception as exp:
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# DEBUG = os.environ.get('CONEXTRACTOR_DEBUG') != None
-# ALLOWED_HOSTS = ['conextractor.herokuapp.com'] if not DEBUG else ['*']
-
-DEBUG = True
-ALLOWED_HOSTS = ['*']
+DEBUG = os.environ.get('CONEXTRACTOR_DEBUG') != None
+ALLOWED_HOSTS = ['conextractor.herokuapp.com'] if not DEBUG else ['*']
 
 INSTALLED_APPS = [
     'django.contrib.sessions',

@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from extractor import main
 from django.views import View
 from .forms import DivForm
+from pprint import  pprint as pp
 import requests
 import os
 import sys
@@ -37,6 +38,7 @@ class Index(View):
 
     def get(self, request, *args, **kwargs):
         form = DivForm()
+        pp(request.META)
         return render(request, self.template_name, {"form": form})
 
     def post(self, request, *args, **kwargs):
