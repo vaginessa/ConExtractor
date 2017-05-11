@@ -6,7 +6,7 @@ try:
 except Exception as exp:
     SECRET_KEY = os.environ.get('SECRET_KEY', '')
     if not SECRET_KEY:
-        print exp, " and You don't have SECRET_KEY in environment !"
+        print exp, " and You don't have SECRET_KEY in the environment !"
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
