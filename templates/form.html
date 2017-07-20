@@ -20,12 +20,11 @@
     <title>ConExtractor | Extract WhatsApp Group Contacts</title>
 
     {# plugins css #}
-    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/csshake.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sweetalert.css' %}">
-    <link href="{% static 'css/materialize.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-          type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/csshake/1.5.2/csshake.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     {# custom css #}
     <link href="{% static 'css/whatprocss.min.css' %}" rel="stylesheet" type="text/css">
@@ -33,13 +32,12 @@
     {# recaptcha API javascript #}
     <script src="https://apis.google.com/js/platform.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="{% static 'js/FileSaver.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="{% static 'js/sweetalert.min.js' %}"></script>
     <script src="{% static 'js/materialize.min.js' %}"></script>
 </head>
 <body>
-
 <nav>
     <div class="navbar-fixed light-blue darken-4">
         <div class="container">
@@ -71,20 +69,9 @@
 
 <div id="name">
     <h2 align="center" class="animated rubberBand" style="cursor: pointer;" id="heading"> Extract Your <i
-            class="fa fa-whatsapp"></i> Group <i
-            class="fa fa-address-book" aria-hidden="true"></i> Contacts !
+            class="fa fa-whatsapp"></i> Group <i class="fa fa-address-book" aria-hidden="true"></i> Contacts !
     </h2>
 </div>
-
-<div class="" style="text-align: center!important;">
-    <a target='_blank' href='http://vmob.me/DE3Q17VL?vl=HyqGeCxgb4'>
-        <img src='http://s.developereconomics.com.s3.amazonaws.com/vl-assets/technomancer_newsletter.png' class="img-responsive">
-        <p>If you are a Developer fill Survey and Win Exciting Prizes !</p>
-    </a>
-</div>
-
-
-<br>
 
 <form class="container" method="post" id="id_divform">
     {{ form.as_p }}
@@ -129,8 +116,9 @@
         <div class="col-lg-1">
             <div class="g-ytsubscribe" data-channelid="UC-jSOiQs07LAbdEbXTzY20w" data-layout="full" data-count="default"
                  data-onytevent="onYtEvent"></div>
-            <p class="right" style="margin-top: 7px;"> Copyrights © <a href="http://www.shuboy2014.me" title="Github">Shubham
-                Aggarwal</a> 2017 <br>Made with <i class="fa fa-heart" style="color: darkred;"></i> in India
+            <p class="right" style="margin-top: 7px;"> Copyrights © <a href="http://www.shuboy2014.me"
+                                                                       title="Github">Shubham
+            Aggarwal</a> 2017 <br>Made with <i class="fa fa-heart" style="color: darkred;"></i> in India
             </p>
         </div>
     </div>
