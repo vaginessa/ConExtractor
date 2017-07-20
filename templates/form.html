@@ -27,7 +27,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     {# custom css #}
-    <link href="{% static 'css/whatprocss.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/whatprocss.css' %}" rel="stylesheet" type="text/css">
 
     {# recaptcha API javascript #}
     <script src="https://apis.google.com/js/platform.js"></script>
@@ -73,23 +73,27 @@
     </h2>
 </div>
 
-<form class="container" method="post" id="id_divform">
-    {{ form.as_p }}
-    {% csrf_token %}
-    <div class="g-recaptcha" align="center" data-sitekey="6LfzXhYUAAAAANBi-HxIyUZ2opqdGNm4rxjuTJsG"></div>
+<div>
+    <form class="container" method="post" id="id_divform">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <div class="g-recaptcha" align="center" data-sitekey="6LfzXhYUAAAAANBi-HxIyUZ2opqdGNm4rxjuTJsG"></div>
 
-    <button type="button" class="btn-floating btn-large waves-effect waves-light green darken-4 s12 m2"
-            id="reset"
-            title="Reset text box">Reset
-    </button>
-    <button type="submit" class="btn-floating btn-large waves-effect waves-light red right" id="extract"
-            title="Submit"><i
-            class="fa fa-paper-plane s12 m2"
-            aria-hidden="true"></i></button>
-</form>
+        <button type="button" class="btn-floating btn-large waves-effect waves-light green darken-4 s12 m2"
+                id="reset"
+                title="Reset text box">Reset
+        </button>
+        <button type="submit" class="btn-floating btn-large waves-effect waves-light red right" id="extract"
+                title="Submit"><i
+                class="fa fa-paper-plane s12 m2"
+                aria-hidden="true"></i></button>
+    </form>
 
-<iframe id="tut-video" align="center" width="560" height="315" src="https://www.youtube.com/embed/lJIhvj7V5qo"
-        frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="center">
+    <iframe id="tut-video" align="center" width="560" height="315" src="https://www.youtube.com/embed/lJIhvj7V5qo"
+            frameborder="0" allowfullscreen></iframe>
+</div>
 
 <div id="error-modal" class="modal">
     <div class="modal-content">
