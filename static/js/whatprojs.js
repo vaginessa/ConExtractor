@@ -1,5 +1,6 @@
 /**
  * Created by Shubham Aggarwal on 12-11-2016.
+ * Lasts uodated on 31-07-2017
  */
 
 var effect = [
@@ -13,6 +14,66 @@ var effect = [
 ];
 
 $(document).ready(function () {
+
+    var nlstatus = $.cookie("nlstatus");
+
+
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    function newsletter() {
+
+        swal({
+                title: "hackprodev Newsletter",
+                text: "Chat Messages extractor Coming Soon!",
+                type: "input",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                animation: "slide-from-top",
+                inputPlaceholder: "Enter Email Address"
+            },
+            function (inputValue) {
+                if (inputValue === false) return false;
+
+                if (inputValue === '') {
+                    swal.showInputError("Please Enter  Email!");
+                    return false;
+                }
+
+                if (!validateEmail(inputValue)) {
+                    swal.showInputError("Please Enter Valid Email!");
+                    return false;
+                }
+
+                var data = {
+                    email: inputValue,
+                    csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: '/newsletter-subscribe',
+                    data: data,
+                    dataType: 'json',
+                    success: function (data) {
+                        swal("Thanks for Subscribing", "success");
+
+                        var expDate2 = new Date();
+                        expDate2.setTime(expDate2.getTime() + (30 * 24 * 60 * 60 * 1000));
+                        $.cookie("nlstatus", true, {path: '/', expires: expDate2});
+
+                    },
+                    error: function () {
+                        swal.showInputError("Looks like Some Error Occurred :( ");
+                        return false;
+                    }
+                });
+
+            });
+    }
+
 
     // over on top heading
     // animation effects using animate.cs
@@ -40,18 +101,17 @@ $(document).ready(function () {
         var captcha_response = $('#g-recaptcha-response').val();
 
         // captcha checked or not
-        if(captcha_response == '') {
-            alert("You need to fill Recaptcha First to Proof that you are a Human !");
+        if (captcha_response === '') {
             reset_id.prop('disabled', false);
             extract_id.prop('disabled', false);
-            return ;
+            return;
         }
 
         // make a object of data to be send
         var data = {
             "csrfmiddlewaretoken": $('input[name="csrfmiddlewaretoken"]').val(),
             "textarea": htmlcode,
-            "recaptcha-response" : $('#g-recaptcha-response').val()
+            "recaptcha-response": $('#g-recaptcha-response').val()
         };
 
         // ajax request to server
@@ -82,6 +142,15 @@ $(document).ready(function () {
 
     // reset textarea
     $("#reset").on("click", function () {
-        $('#div-element').val("");
+        $('#id_textarea').val("");
     });
+
+
+    window.onload = function () {
+        setTimeout(function () {
+            if (nlstatus === null || !nlstatus) {
+                newsletter();
+            }
+        }, 2000);
+    };
 });

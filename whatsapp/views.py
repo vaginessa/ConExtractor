@@ -1,21 +1,22 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from extractor import main
 from django.views import View
+from validate_email import validate_email
 from .forms import DivForm
 import requests
 import os
-import sys
 import re
 
 try:
-    from whatpro.secret import CAPTCHA_KEY
+    from whatpro.secret import CAPTCHA_KEY, MAILCHIMP_API_KEY, LIST_ID
 except ImportError as im:
     SECRET_KEY = os.environ.get('CAPTCHA_KEY', '')
-    if not SECRET_KEY:
-        print(im, " and You don't have CAPTCHA_KEY in environment !")
-        sys.exit(0)
+    MAILCHIMP_API_KEY = os.environ.get('MAILCHIMP_API_KEY', '')
+    LIST_ID = os.environ.get('LIST_ID', '')
+
+MAILCHIMP_URL = 'https://us16.api.mailchimp.com/3.0/lists/2a0abae869/members/'
 
 
 # Separate saved and not saved contacts
@@ -65,3 +66,28 @@ class Index(View):
                 return JsonResponse({"error": "extraction failed!"})
         else:
             return JsonResponse({"status": False})
+
+
+def newsletter(request):
+    if request.is_ajax() and request.method == 'POST':
+        email = request.POST.get('email', False)
+        if email:
+            auth = ('hackprodev', MAILCHIMP_API_KEY)
+            headers = {'Content-Type': 'application/json'}
+            is_valid = validate_email(email)
+            if is_valid:
+                data = {
+                    'email_address': email,
+                    'status': 'subscribed'
+                }
+                response = requests.post(MAILCHIMP_URL, auth=auth, headers=headers, json=data)
+                data = {
+                    "status": True if response.status_code == 200 else False
+                }
+                return JsonResponse(data)
+            else:
+                return JsonResponse({"status": "SPAM"})
+        else:
+            HttpResponse('', status=404)
+    else:
+        return HttpResponse('', status=404)
