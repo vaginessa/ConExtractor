@@ -17,14 +17,12 @@ $(document).ready(function () {
 
     var nlstatus = $.cookie("nlstatus");
 
-
     function validateEmail(email) {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     }
 
     function newsletter() {
-
         swal({
                 title: "hackprodev Newsletter",
                 text: "Chat Messages extractor Coming Soon!",
@@ -59,24 +57,18 @@ $(document).ready(function () {
                     dataType: 'json',
                     success: function (data) {
                         swal("Thanks for Subscribing", "success");
-
                         var expDate2 = new Date();
                         expDate2.setTime(expDate2.getTime() + (30 * 24 * 60 * 60 * 1000));
                         $.cookie("nlstatus", true, {path: '/', expires: expDate2});
-
                     },
                     error: function () {
                         swal.showInputError("Looks like Some Error Occurred :( ");
                         return false;
                     }
                 });
-
             });
     }
 
-
-    // over on top heading
-    // animation effects using animate.cs
     $('#heading').hover(function () {
         $(this).removeClass();
         var index = Math.floor((Math.random() * 10) + 1);
@@ -145,6 +137,9 @@ $(document).ready(function () {
         $('#id_textarea').val("");
     });
 
+    $('#nlbtn').on("click", function () {
+        newsletter();
+    });
 
     window.onload = function () {
         setTimeout(function () {
