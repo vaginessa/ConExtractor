@@ -6,15 +6,12 @@ from django.views import View
 from validate_email import validate_email
 from .forms import DivForm
 import requests
-import os
 import re
+from decouple import config
 
-try:
-    from whatpro.secret import CAPTCHA_KEY, MAILCHIMP_API_KEY, LIST_ID
-except ImportError as im:
-    SECRET_KEY = os.environ.get('CAPTCHA_KEY', '')
-    MAILCHIMP_API_KEY = os.environ.get('MAILCHIMP_API_KEY', '')
-    LIST_ID = os.environ.get('LIST_ID', '')
+CAPTCHA_KEY = config('CAPTCHA_KEY')
+MAILCHIMP_API_KEY = config('MAILCHIMP_API_KEY')
+LIST_ID = config('LIST_ID')
 
 MAILCHIMP_URL = 'https://us16.api.mailchimp.com/3.0/lists/2a0abae869/members/'
 
@@ -44,17 +41,17 @@ class Index(View):
         if request.is_ajax():
             form = self.form_class(request.POST)
 
-            # ''' reCAPTCHA validation '''
-            # recaptcha_response = request.POST.get('recaptcha-response')
-            # data = {
-            #     'secret': CAPTCHA_KEY,
-            #     'response': recaptcha_response
-            # }
-            # r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
-            # result = r.json()
-            # ''' reCAPTCHA validation ends'''
+            ''' reCAPTCHA validation '''
+            recaptcha_response = request.POST.get('recaptcha-response')
+            data = {
+                'secret': CAPTCHA_KEY,
+                'response': recaptcha_response
+            }
+            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+            result = r.json()
+            ''' reCAPTCHA validation ends'''
 
-            if form.is_valid():  # and result.get('success', ''):
+            if form.is_valid() and result.get('success', ''):
                 contact_list = main(form.cleaned_data["textarea"])
                 saved, notsaved = separeate(contact_list)
                 contacts = "You Have {} Saved Contacts\n\n".format(len(saved))

@@ -90,20 +90,20 @@ $(document).ready(function () {
 
         // get htmlcode from which contacts extracted
         var htmlcode = $('#id_textarea').val();
-       // var captcha_response = $('#g-recaptcha-response').val();
+        var captcha_response = $('#g-recaptcha-response').val();
 
         // captcha checked or not
-        // if (captcha_response === '') {
-        //     reset_id.prop('disabled', false);
-        //     extract_id.prop('disabled', false);
-        //     return;
-        // }
+        if (captcha_response === '') {
+            reset_id.prop('disabled', false);
+            extract_id.prop('disabled', false);
+            return;
+        }
 
         // make a object of data to be send
         var data = {
             "csrfmiddlewaretoken": $('input[name="csrfmiddlewaretoken"]').val(),
             "textarea": htmlcode,
-           // "recaptcha-response": $('#g-recaptcha-response').val()
+            "recaptcha-response": $('#g-recaptcha-response').val()
         };
 
         // ajax request to server

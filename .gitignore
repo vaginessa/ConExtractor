@@ -4,3 +4,4 @@ whatsapp/migrations
 whatpro/secret.py
 *.pyc
 .idea/
+.env

@@ -1,16 +1,13 @@
 import os
 import dj_database_url
+from decouple import config
 
-try:
-    from secret import SECRET_KEY
-except Exception as exp:
-    SECRET_KEY = os.environ.get('SECRET_KEY', '')
-    if not SECRET_KEY:
-        print exp, " and You don't have SECRET_KEY in the environment !"
+SECRET_KEY = config('SECRET_KEY')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-DEBUG = os.environ.get('CONEXTRACTOR_DEBUG') != None
+DEBUG = config('DEBUG', cast=bool)
+
 ALLOWED_HOSTS = ['conextractor.herokuapp.com'] if not DEBUG else ['*']
 
 INSTALLED_APPS = [
