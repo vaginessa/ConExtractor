@@ -44,17 +44,17 @@ class Index(View):
         if request.is_ajax():
             form = self.form_class(request.POST)
 
-            ''' reCAPTCHA validation '''
-            recaptcha_response = request.POST.get('recaptcha-response')
-            data = {
-                'secret': CAPTCHA_KEY,
-                'response': recaptcha_response
-            }
-            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
-            result = r.json()
-            ''' reCAPTCHA validation ends'''
+            # ''' reCAPTCHA validation '''
+            # recaptcha_response = request.POST.get('recaptcha-response')
+            # data = {
+            #     'secret': CAPTCHA_KEY,
+            #     'response': recaptcha_response
+            # }
+            # r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+            # result = r.json()
+            # ''' reCAPTCHA validation ends'''
 
-            if result.get('success', '') and form.is_valid():
+            if form.is_valid():  # and result.get('success', ''):
                 contact_list = main(form.cleaned_data["textarea"])
                 saved, notsaved = separeate(contact_list)
                 contacts = "You Have {} Saved Contacts\n\n".format(len(saved))
